@@ -7,8 +7,11 @@ import type { Movie as MovieType } from "@/services/[Movies]/{Movie}/types/Movie
 import BaseLayout from "@/components/layouts/BaseLayout.astro";
 import Movies from "@/components/services/[Movies]/Movies.astro";
 
-const movies = await getMovies() as MovieType[];
-const persons = await getPersons() as PersonType[];
+const hasSanityConfig = Boolean(
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID && import.meta.env.PUBLIC_SANITY_DATASET,
+);
+const movies = hasSanityConfig ? await getMovies() as MovieType[] : [];
+const persons = hasSanityConfig ? await getPersons() as PersonType[] : [];
 
 const sanityData = { movies, persons };
 

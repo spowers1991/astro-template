@@ -8,6 +8,9 @@ import Movie from "@/components/services/[Movies]/{Movie}/Movie.astro";
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
 
 export async function getStaticPaths() {
+  if (!import.meta.env.PUBLIC_SANITY_PROJECT_ID || !import.meta.env.PUBLIC_SANITY_DATASET) {
+    return [];
+  }
   const movies = await getMovies() as MovieType[];
   const persons = await getPersons() as PersonType[];
 

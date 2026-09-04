@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+
+const posts = await getCollection("posts");
+---
+
+<BaseLayout title="Content collection">
+  <section class="mx-auto max-w-3xl px-6 py-12">
+    <h1 class="text-3xl font-bold">Content collection</h1>
+    {posts.map((post) => (
+      <article class="mt-8 rounded border border-slate-700 p-6">
+        <h2 class="text-xl font-semibold">{post.data.title}</h2>
+        <p class="mt-2 text-slate-300">{post.data.description}</p>
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString()}
+        </time>
+        <p class="mt-4">{post.body}</p>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
