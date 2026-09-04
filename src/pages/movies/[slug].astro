@@ -6,8 +6,13 @@ import { getMovies } from "@/services/[Movies]/queries/getMovies";
 import BaseLayout from "@/components/layouts/BaseLayout.astro";
 import Movie from "@/components/services/[Movies]/{Movie}/Movie.astro";
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
+import { envEnabled } from "@/lib/sanity/helpers/envEnabled";
 
 export async function getStaticPaths() {
+  if (!envEnabled()) {
+    return [];
+  }
+
   const movies = await getMovies() as MovieType[];
   const persons = await getPersons() as PersonType[];
 
