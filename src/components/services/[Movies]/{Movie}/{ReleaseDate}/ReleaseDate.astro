@@ -1,0 +1,15 @@
+---
+import P from "@/components/html/{P}/P.astro";
+
+interface Props {
+  releaseDate?: string;
+}
+
+const { releaseDate } = Astro.props;
+---
+
+{releaseDate && (
+  <P class="movie-release-date">
+    <strong>Release Date:</strong> {new Date(releaseDate).toLocaleDateString()}
+  </P>
+)}

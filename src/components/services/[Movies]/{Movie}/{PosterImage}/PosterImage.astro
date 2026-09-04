@@ -1,0 +1,21 @@
+---
+import Img from "@/components/html/{Img}/Img.astro";
+import { safeImageUrl } from "@/lib/sanity/helpers/image";
+
+interface Props {
+  poster?: any;
+  alt: string;
+}
+
+const { poster, alt } = Astro.props;
+const posterUrl = safeImageUrl(poster);
+---
+
+{posterUrl && (
+  <Img
+    src={posterUrl}
+    alt={alt}
+    class="movie-poster"
+    loading="lazy"
+  />
+)}

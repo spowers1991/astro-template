@@ -1,0 +1,26 @@
+---
+
+import type { Person as PersonType } from "@/services/[Persons]/{Person}/types/Person";
+import type { Movie as MovieType } from "@/services/[Movies]/{Movie}/types/Movie";
+import { getMovies } from "@/services/[Movies]/queries/getMovies";
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import Movie from "@/components/services/[Movies]/{Movie}/Movie.astro";
+import { getPersons } from "@/services/[Persons]/queries/getPersons";
+
+export async function getStaticPaths() {
+  const movies = await getMovies() as MovieType[];
+  const persons = await getPersons() as PersonType[];
+
+  return movies.map((movie) => ({
+    params: { slug: movie.slug.current },
+    props: { sanityData: { movie, persons } },
+  }));
+}
+
+const { sanityData } = Astro.props;
+
+---
+
+<BaseLayout>
+  <Movie data={sanityData} />
+</BaseLayout>

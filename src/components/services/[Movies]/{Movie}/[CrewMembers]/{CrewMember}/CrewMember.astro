@@ -1,0 +1,21 @@
+---
+import LI from "@/components/html/{LI}/LI.astro";
+import type { CrewMember as CrewMemberType } from "@/services/[Movies]/{Movie}/[CrewMembers]/{CrewMember}/CrewMember";
+import type { Person as PersonType } from "@/services/[Persons]/{Person}/types/Person";
+
+interface Props {
+  crewMember: CrewMemberType;
+  persons: PersonType[];
+}
+
+const { crewMember, persons } = Astro.props;
+
+const personRef = crewMember.person._ref;
+
+const person = persons.find((p: PersonType) => p._id === personRef);
+---
+
+<LI>
+  <strong>{person?.name}</strong>
+  {crewMember.department && ` (${crewMember.department})`}
+</LI>

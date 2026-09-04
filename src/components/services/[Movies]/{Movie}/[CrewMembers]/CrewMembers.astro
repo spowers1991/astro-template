@@ -1,0 +1,26 @@
+---
+import Section from "@/components/html/{Section}/Section.astro";
+import H2 from "@/components/html/{H2}/H2.astro";
+import UL from "@/components/html/{UL}/UL.astro";
+import CrewMember from "@/components/services/[Movies]/{Movie}/[CrewMembers]/{CrewMember}/CrewMember.astro";
+import type { CrewMember as CrewMemberType } from "@/services/[Movies]/{Movie}/[CrewMembers]/{CrewMember}/CrewMember";
+import type { Person as PersonType } from "@/services/[Persons]/{Person}/types/Person";
+
+interface Props {
+  crewMembers: CrewMemberType[];
+  persons: PersonType[];
+}
+
+const { crewMembers, persons } = Astro.props;
+---
+
+{crewMembers && crewMembers.length > 0 && (
+  <Section class="movie-crew">
+    <H2>Crew</H2>
+    <UL>
+      {crewMembers.map((crewMember) => (
+        <CrewMember crewMember={crewMember} persons={persons} />
+      ))}
+    </UL>
+  </Section>
+)}

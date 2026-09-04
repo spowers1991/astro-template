@@ -1,0 +1,39 @@
+---
+import Article from "@/components/html/{Article}/Article.astro";
+import H1 from "@/components/html/{H1}/H1.astro";
+import PosterImage from "@/components/services/[Movies]/{Movie}/{PosterImage}/PosterImage.astro";
+import ReleaseDate from "@/components/services/[Movies]/{Movie}/{ReleaseDate}/ReleaseDate.astro";
+import Overview from "@/components/services/[Movies]/{Movie}/{Overview}/Overview.astro";
+import CastMembers from "@/components/services/[Movies]/{Movie}/[CastMembers]/CastMembers.astro";
+import CrewMembers from "@/components/services/[Movies]/{Movie}/[CrewMembers]/CrewMembers.astro";
+import type { Movie as MovieType } from "@/services/[Movies]/{Movie}/types/Movie";
+import type { Person as PersonType } from "@/services/[Persons]/{Person}/types/Person";
+
+interface Props {
+  data: {
+    movie: MovieType;
+    persons: PersonType[];
+  };
+}
+
+const { data: { movie, persons } } = Astro.props;
+---
+
+<Article class="movie">
+
+  <H1>
+    {movie.title || movie.name}
+  </H1>
+
+  <PosterImage poster={movie.poster} alt={movie.title || movie.name} />
+
+  <ReleaseDate releaseDate={movie.releaseDate} />
+
+  <Overview overview={movie.overview} />
+
+  <CastMembers castMembers={movie.castMembers} persons={persons} />
+
+  <CrewMembers crewMembers={movie.crewMembers} persons={persons} />
+
+</Article>
+

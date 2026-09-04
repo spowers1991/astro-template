@@ -1,0 +1,32 @@
+---
+import H1 from "@/components/html/{H1}/H1.astro";
+import UL from "@/components/html/{UL}/UL.astro";
+import LI from "@/components/html/{LI}/LI.astro";
+import A from "@/components/html/{A}/A.astro";
+
+interface Props {
+  data: {
+    movies: Array<{
+      title: string;
+      slug: {
+        current: string;
+      };
+    }>;
+  };
+}
+
+const { data: { movies } } = Astro.props;
+---
+
+<H1>
+  Movie App
+</H1>
+<UL>
+    {movies.map((movie) => (
+        <LI>
+          <A href={'/movies/' + movie.slug.current}>
+              {movie.title}
+          </A>
+        </LI>
+    ))}
+</UL>
