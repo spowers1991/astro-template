@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"footer"> {}
+
+const props = Astro.props;
+---
+
+<footer {...props}>
+  <slot />
+</footer>
