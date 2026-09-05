@@ -1,4 +1,18 @@
 ---
+import "@/styles/global.css";
+import A from "@/components/html/{A}/A.astro";
+import Body from "@/components/html/{Body}/Body.astro";
+import Footer from "@/components/html/{Footer}/Footer.astro";
+import Head from "@/components/html/{Head}/Head.astro";
+import Header from "@/components/html/{Header}/Header.astro";
+import Html from "@/components/html/{Html}/Html.astro";
+import Link from "@/components/html/{Link}/Link.astro";
+import Main from "@/components/html/{Main}/Main.astro";
+import Meta from "@/components/html/{Meta}/Meta.astro";
+import Nav from "@/components/html/{Nav}/Nav.astro";
+import P from "@/components/html/{P}/P.astro";
+import Title from "@/components/html/{Title}/Title.astro";
+
 interface Props {
   title?: string;
   description?: string;
@@ -8,28 +22,30 @@ const { title = "Movie App", description = "Astro Movie Application" } = Astro.p
 ---
 
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/">Home</a>
-      </nav>
-    </header>
+<Html lang="en">
+  <Head>
+    <Meta charset="utf-8" />
+    <Link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Meta name="description" content={description} />
+    <Meta name="generator" content={Astro.generator} />
+    <Title>{title}</Title>
+  </Head>
+  <Body>
+    <Header>
+      <Nav>
+        <A href="/">Home</A>
+        <A href="/content">Content</A>
+        <A href="/example">Example</A>
+      </Nav>
+    </Header>
 
-    <main>
+    <Main>
       <slot />
-    </main>
+    </Main>
 
-    <footer>
-      <p>&copy; {new Date().getFullYear()} Movie App</p>
-    </footer>
-  </body>
-</html>
+    <Footer>
+      <P>&copy; {new Date().getFullYear()} Movie App</P>
+    </Footer>
+  </Body>
+</Html>

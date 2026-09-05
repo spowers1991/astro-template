@@ -1,5 +1,6 @@
 ---
 import P from "@/components/html/{P}/P.astro";
+import Section from "@/components/html/{Section}/Section.astro";
 
 interface Props {
   releaseDate?: string;
@@ -9,7 +10,9 @@ const { releaseDate } = Astro.props;
 ---
 
 {releaseDate && (
-  <P class="movie-release-date">
-    <strong>Release Date:</strong> {new Date(releaseDate).toLocaleDateString()}
-  </P>
+  <Section>
+    <P>
+      <strong>Release Date:</strong> {new Date(releaseDate).toLocaleDateString()}
+    </P>
+  </Section>
 )}
