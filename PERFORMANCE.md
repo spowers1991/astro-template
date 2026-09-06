@@ -8,6 +8,9 @@ optimisation integrations:
   minifiers.
 - Astro emits imported assets through its normal build pipeline. Static files
   in `public/` are copied unchanged because they are already served as-is.
+- Movie posters use the Sanity image CDN through `safeImageUrl()`. Poster URLs
+  request a 600px-wide, quality-80 response with automatic format negotiation
+  instead of downloading the original asset.
 - The only client-side widget is the counter on the integration example page.
   It uses `client:visible` so its JavaScript is deferred until the widget can
   be seen. The movie pages contain no client directives and therefore produce

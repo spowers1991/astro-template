@@ -14,7 +14,12 @@ export function safeImageUrl(source: SanityImageSource | null | undefined) {
   if (!source) return null;
 
   try {
-    return builder.image(source).url();
+    return builder
+      .image(source)
+      .width(600)
+      .quality(80)
+      .auto("format")
+      .url();
   } catch {
     return null;
   }
