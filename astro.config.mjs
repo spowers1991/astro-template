@@ -16,7 +16,7 @@ export default defineConfig({
   vite: {
     build: {
       cssMinify: true,
-      minify: 'esbuild',
+      minify: true,
     },
     plugins: [tailwindcss()],
     resolve: {
