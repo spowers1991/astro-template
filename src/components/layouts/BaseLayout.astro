@@ -14,7 +14,7 @@ import P from "@/components/html/{P}/P.astro";
 import Title from "@/components/html/{Title}/Title.astro";
 
 interface Props {
-  pageId: string;
+  pageId?: string;
   title?: string;
   description?: string;
 }
@@ -24,6 +24,8 @@ const {
   title = "Movie App",
   description = "Astro Movie Application",
 } = Astro.props;
+const routeSegment = Astro.url.pathname.split("/").filter(Boolean)[0];
+const resolvedPageId = pageId ?? `page-${routeSegment || "home"}`;
 ---
 
 <!doctype html>
@@ -45,7 +47,7 @@ const {
       </Nav>
     </Header>
 
-    <Main id={pageId}>
+    <Main id={resolvedPageId}>
       <slot />
     </Main>
 
