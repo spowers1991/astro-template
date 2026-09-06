@@ -1,0 +1,18 @@
+---
+import A from "@/components/html/{A}/A.astro";
+import H1 from "@/components/html/{H1}/H1.astro";
+import P from "@/components/html/{P}/P.astro";
+import Section from "@/components/html/{Section}/Section.astro";
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="The page you are looking for could not be found."
+>
+  <Section class="flex min-h-[50vh] flex-col items-center justify-center text-center">
+    <H1>404: Page Not Found</H1>
+    <P class="mt-4">The page you are looking for could not be found.</P>
+    <A class="mt-6 underline" href="/">Return home</A>
+  </Section>
+</BaseLayout>
