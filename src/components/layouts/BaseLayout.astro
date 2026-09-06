@@ -14,11 +14,16 @@ import P from "@/components/html/{P}/P.astro";
 import Title from "@/components/html/{Title}/Title.astro";
 
 interface Props {
+  pageId: string;
   title?: string;
   description?: string;
 }
 
-const { title = "Movie App", description = "Astro Movie Application" } = Astro.props;
+const {
+  pageId,
+  title = "Movie App",
+  description = "Astro Movie Application",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -40,7 +45,7 @@ const { title = "Movie App", description = "Astro Movie Application" } = Astro.p
       </Nav>
     </Header>
 
-    <Main>
+    <Main id={pageId}>
       <slot />
     </Main>
 
