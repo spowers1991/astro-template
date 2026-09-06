@@ -12,7 +12,12 @@ import tailwindcss from '@tailwindcss/vite';
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
 
 export default defineConfig({
+  compressHTML: true,
   vite: {
+    build: {
+      cssMinify: true,
+      minify: true,
+    },
     plugins: [tailwindcss()],
     resolve: {
       alias: {
