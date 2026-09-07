@@ -40,7 +40,7 @@ export default function Counter() {
         createSessionEntry(sessionEntry);
         setData((prev) => {
           const newValue = { count: prev.count + 1 };
-          setSessionStore("count", { name: "count", value: newValue });
+          setSessionStore({ name: "count", value: newValue });
           return newValue;
         });
       }}

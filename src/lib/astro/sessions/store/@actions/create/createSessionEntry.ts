@@ -5,5 +5,5 @@ import { setSessionStore } from "@/lib/astro/sessions/store/@actions/set/setSess
 // Seeds the entry only if it isn't already present in sessionStorage
 export function createSessionEntry<T>(entry: SessionData<T>) {
     if (getSessionStore(entry.name) !== undefined) return;
-    setSessionStore(entry.name, entry);
+    setSessionStore(entry);
 }
