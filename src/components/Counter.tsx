@@ -18,7 +18,7 @@ export default function Counter() {
 
     if (typeof storedData === "number") {
       const migratedData = { count: storedData };
-      setSessionStore("count", { name: "count", value: migratedData });
+      setSessionStore({ name: "count", value: migratedData });
       setData(migratedData);
       return;
     }
