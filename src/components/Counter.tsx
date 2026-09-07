@@ -14,7 +14,23 @@ export default function Counter() {
   const [data, setData] = useState(sessionEntry.value);
 
   useEffect(() => {
-    setData(getSessionStore<typeof sessionEntry.value>("count") ?? sessionEntry.value);
+    const storedData = getSessionStore<unknown>("count");
+
+    if (typeof storedData === "number") {
+      const migratedData = { count: storedData };
+      setSessionStore("count", { name: "count", value: migratedData });
+      setData(migratedData);
+      return;
+    }
+
+    if (
+      storedData &&
+      typeof storedData === "object" &&
+      "count" in storedData &&
+      typeof storedData.count === "number"
+    ) {
+      setData({ count: storedData.count });
+    }
   }, []);
 
   return (
