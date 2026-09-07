@@ -1,27 +1,35 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import type { SessionData } from "@/lib/astro/sessions/types/SessionData";
+import { setSessionStore } from "@/lib/astro/sessions/store/@actions/set/setSessionStore";
+import { getSessionStore } from "@/lib/astro/sessions/store/@actions/get/getSessionStore";
+import { createSessionEntry } from "@/lib/astro/sessions/store/@actions/create/createSessionEntry";
 
 export default function Counter() {
-  const [count, setCount] = useState(0);
+
+  const sessionEntry = {
+    name: "count",
+    value: { count: 0 },
+  } satisfies SessionData<{ count: number }>;
+
+  const [data, setData] = useState(sessionEntry.value);
 
   useEffect(() => {
-    const storedCount = sessionStorage.getItem("count");
-    if (storedCount) {
-      setCount(Number(storedCount));
-    }
+    setData(getSessionStore<typeof sessionEntry.value>("count") ?? sessionEntry.value);
   }, []);
 
   return (
     <button
       className="rounded bg-cyan-400 px-4 py-2 font-semibold text-slate-950"
       onClick={() => {
-        setCount((value) => {
-          const newValue = value + 1;
-          sessionStorage.setItem("count", newValue.toString());
+        createSessionEntry(sessionEntry);
+        setData((prev) => {
+          const newValue = { count: prev.count + 1 };
+          setSessionStore("count", { name: "count", value: newValue });
           return newValue;
         });
       }}
     >
-      Clicked {count} {count === 1 ? "time" : "times"}
+      Clicked {data.count} {data.count === 1 ? "time" : "times"}
     </button>
   );
 }
