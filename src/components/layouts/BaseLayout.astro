@@ -12,13 +12,23 @@ import Meta from "@/components/html/{Meta}/Meta.astro";
 import Nav from "@/components/html/{Nav}/Nav.astro";
 import P from "@/components/html/{P}/P.astro";
 import Title from "@/components/html/{Title}/Title.astro";
+import { resolvePageId } from "@/lib/astro/helpers/resolvePageId";
 
 interface Props {
+  pageId?: string;
   title?: string;
   description?: string;
 }
 
-const { title = "Movie App", description = "Astro Movie Application" } = Astro.props;
+const {
+  pageId,
+  title = "Movie App",
+  description = "Astro Movie Application",
+} = Astro.props;
+
+const astro = Astro;
+const resolvedPageId = resolvePageId({ astro, pageId });
+
 ---
 
 <!doctype html>
@@ -40,7 +50,7 @@ const { title = "Movie App", description = "Astro Movie Application" } = Astro.p
       </Nav>
     </Header>
 
-    <Main>
+    <Main id={resolvedPageId}>
       <slot />
     </Main>
 

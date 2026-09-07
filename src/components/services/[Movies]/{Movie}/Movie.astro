@@ -19,7 +19,7 @@ interface Props {
 const { data: { movie, persons } } = Astro.props;
 ---
 
-<Article class="movie">
+<Article class="movie" data-slug={movie.slug.current}>
 
   <H1>
     {movie.title || movie.name}
