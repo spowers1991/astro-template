@@ -19,6 +19,10 @@ const resolvedSchema = (() => {
     return { "@context": "https://schema.org", ...schema, url: schema.url ?? canonicalUrl };
   }
 
+  if (schema["@type"] === "Movie") {
+    return { "@context": "https://schema.org", ...schema, url: schema.url ?? canonicalUrl };
+  }
+
   return {
     "@context": "https://schema.org",
     ...schema,

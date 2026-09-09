@@ -23,4 +23,13 @@ export interface ArticleSchema {
   mainEntityOfPage?: string;
 }
 
-export type JsonLdSchema = WebSiteSchema | WebPageSchema | ArticleSchema;
+export interface MovieSchema {
+  "@type": "Movie";
+  name: string;
+  description?: string;
+  image?: string | string[];
+  datePublished?: string;
+  url?: string;
+}
+
+export type JsonLdSchema = WebSiteSchema | WebPageSchema | ArticleSchema | MovieSchema;

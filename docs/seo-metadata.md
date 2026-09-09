@@ -19,6 +19,7 @@
   - `WebSite`
   - `WebPage`
   - `Article`
+  - `Movie`
 - `BaseLayout` accepts `jsonLd` as a single schema object or array.
 
 ## Robots

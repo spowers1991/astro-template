@@ -38,7 +38,7 @@ const socialImage = safeImageUrl(movie.poster) || undefined;
   seo={{
     canonicalPath: `/movies/${movie.slug.current}/`,
     openGraph: {
-      type: "article",
+      type: "website",
       image: socialImage,
     },
     twitter: {
@@ -48,11 +48,10 @@ const socialImage = safeImageUrl(movie.poster) || undefined;
   jsonLd={[
     { "@type": "WebPage", name: title, description },
     {
-      "@type": "Article",
-      headline: title,
+      "@type": "Movie",
+      name: title,
       description,
-      datePublished: movie._createdAt,
-      dateModified: movie._updatedAt,
+      datePublished: movie.releaseDate,
       image: socialImage,
     },
   ]}
