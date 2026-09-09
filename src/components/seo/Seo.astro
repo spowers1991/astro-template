@@ -49,4 +49,4 @@ const socialImage = resolveSocialImage({ openGraph, twitter });
 <meta name="twitter:description" content={description} />
 {twitter?.site && <meta name="twitter:site" content={twitter.site} />}
 {twitter?.creator && <meta name="twitter:creator" content={twitter.creator} />}
-{socialImage && <meta name="twitter:image" content={socialImage} />}
+{(twitter?.image ?? openGraph?.image) && <meta name="twitter:image" content={twitter?.image ?? openGraph?.image} />}
