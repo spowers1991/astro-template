@@ -14,8 +14,8 @@ import P from "@/components/html/{P}/P.astro";
 import JsonLd from "@/components/seo/JsonLd.astro";
 import Seo from "@/components/seo/Seo.astro";
 import { resolvePageId } from "@/lib/astro/helpers/resolvePageId";
-import type { JsonLdSchema } from "@/lib/astro/types/jsonLd";
-import type { SeoMeta } from "@/lib/astro/types/seo";
+import type { JsonLdSchema } from "@/lib/seo/types/jsonLd";
+import type { SeoMeta } from "@/lib/seo/types/seo";
 
 interface Props {
   pageId?: string;

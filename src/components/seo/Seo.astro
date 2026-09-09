@@ -1,6 +1,11 @@
 ---
-import { resolveCanonicalUrl } from "@/lib/astro/helpers/resolveCanonicalUrl";
-import type { SeoMeta } from "@/lib/astro/types/seo";
+import { resolveCanonicalUrl } from "@/lib/seo/helpers/resolveCanonicalUrl";
+import {
+  resolveRobotsContent,
+  resolveSocialImage,
+  resolveTwitterCard,
+} from "@/lib/seo/helpers/resolveSeoMeta";
+import type { SeoMeta } from "@/lib/seo/types/seo";
 
 interface Props extends SeoMeta {
   siteName?: string;
@@ -22,13 +27,9 @@ const canonicalUrl = resolveCanonicalUrl({
   url: Astro.url,
 });
 
-const robotsContent = [
-  robots?.index === false ? "noindex" : "index",
-  robots?.follow === false ? "nofollow" : "follow",
-].join(",");
-
-const twitterCard = twitter?.card ?? (openGraph?.image || twitter?.image ? "summary_large_image" : "summary");
-const socialImage = openGraph?.image ?? twitter?.image;
+const robotsContent = resolveRobotsContent(robots);
+const twitterCard = resolveTwitterCard({ openGraph, twitter });
+const socialImage = resolveSocialImage({ openGraph, twitter });
 ---
 
 <title>{title}</title>

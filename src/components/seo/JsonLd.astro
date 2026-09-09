@@ -1,6 +1,7 @@
 ---
-import { resolveCanonicalUrl } from "@/lib/astro/helpers/resolveCanonicalUrl";
-import type { JsonLdSchema } from "@/lib/astro/types/jsonLd";
+import { resolveCanonicalUrl } from "@/lib/seo/helpers/resolveCanonicalUrl";
+import { resolveJsonLdSchema } from "@/lib/seo/helpers/resolveJsonLdSchema";
+import type { JsonLdSchema } from "@/lib/seo/types/jsonLd";
 
 interface Props {
   schema: JsonLdSchema;
@@ -10,25 +11,7 @@ const { schema } = Astro.props;
 const canonicalUrl = resolveCanonicalUrl({ site: Astro.site, url: Astro.url });
 const siteUrl = Astro.site ? new URL("/", Astro.site).toString() : new URL("/", Astro.url.origin).toString();
 
-const resolvedSchema = (() => {
-  if (schema["@type"] === "WebSite") {
-    return { "@context": "https://schema.org", ...schema, url: schema.url ?? siteUrl };
-  }
-
-  if (schema["@type"] === "WebPage") {
-    return { "@context": "https://schema.org", ...schema, url: schema.url ?? canonicalUrl };
-  }
-
-  if (schema["@type"] === "Movie") {
-    return { "@context": "https://schema.org", ...schema, url: schema.url ?? canonicalUrl };
-  }
-
-  return {
-    "@context": "https://schema.org",
-    ...schema,
-    mainEntityOfPage: schema.mainEntityOfPage ?? canonicalUrl,
-  };
-})();
+const resolvedSchema = resolveJsonLdSchema({ schema, canonicalUrl, siteUrl });
 ---
 
 <script is:inline type="application/ld+json" set:html={JSON.stringify(resolvedSchema)} />
