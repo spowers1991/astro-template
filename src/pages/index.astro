@@ -13,9 +13,19 @@ const movies = sanityEnabled ? await getMovies() as MovieType[] : [];
 const persons = sanityEnabled ? await getPersons() as PersonType[] : [];
 
 const sanityData = { movies, persons };
+const title = "Movie App";
+const description = "Browse movie details, casts, crews, and release information.";
 
 ---
 
-<BaseLayout pageId="page-home" title="Movie App">
+<BaseLayout
+  pageId="page-home"
+  title={title}
+  description={description}
+  jsonLd={[
+    { "@type": "WebSite", name: title, description },
+    { "@type": "WebPage", name: title, description },
+  ]}
+>
     <Movies data={sanityData} />
 </BaseLayout>

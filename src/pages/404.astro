@@ -10,6 +10,12 @@ import BaseLayout from "@/components/layouts/BaseLayout.astro";
   pageId="page-404"
   title="Page Not Found"
   description="The page you are looking for could not be found."
+  seo={{ robots: { index: false, follow: false } }}
+  jsonLd={{
+    "@type": "WebPage",
+    name: "Page Not Found",
+    description: "The page you are looking for could not be found.",
+  }}
 >
   <Section class="flex min-h-[50vh] flex-col items-center justify-center text-center">
     <H1>404: Page Not Found</H1>

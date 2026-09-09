@@ -6,13 +6,16 @@ import { loadEnv } from 'vite';
 import sanity from '@sanity/astro';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+const site = env.SITE_URL || env.PUBLIC_SITE_URL;
 
 export default defineConfig({
   compressHTML: true,
+  site,
   vite: {
     build: {
       cssMinify: true,
@@ -36,5 +39,6 @@ export default defineConfig({
       : []),
     react(),
     mdx(),
+    sitemap(),
   ]
 });
