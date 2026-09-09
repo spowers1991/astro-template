@@ -1,0 +1,52 @@
+---
+import { resolveCanonicalUrl } from "@/lib/seo/helpers/resolveCanonicalUrl";
+import {
+  resolveRobotsContent,
+  resolveSocialImage,
+  resolveTwitterCard,
+} from "@/lib/seo/helpers/resolveSeoMeta";
+import type { SeoMeta } from "@/lib/seo/types/seo";
+
+interface Props extends SeoMeta {
+  siteName?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  robots,
+  openGraph,
+  twitter,
+  siteName = "Movie App",
+} = Astro.props;
+
+const canonicalUrl = resolveCanonicalUrl({
+  path: canonicalPath,
+  site: Astro.site,
+  url: Astro.url,
+});
+
+const robotsContent = resolveRobotsContent(robots);
+const twitterCard = resolveTwitterCard({ openGraph, twitter });
+const socialImage = resolveSocialImage({ openGraph, twitter });
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<meta name="robots" content={robotsContent} />
+
+<meta property="og:type" content={openGraph?.type ?? "website"} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:site_name" content={siteName} />
+{socialImage && <meta property="og:image" content={socialImage} />}
+
+<meta name="twitter:card" content={twitterCard} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{twitter?.site && <meta name="twitter:site" content={twitter.site} />}
+{twitter?.creator && <meta name="twitter:creator" content={twitter.creator} />}
+{(twitter?.image ?? openGraph?.image) && <meta name="twitter:image" content={twitter?.image ?? openGraph?.image} />}

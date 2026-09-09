@@ -7,6 +7,8 @@ import BaseLayout from "@/components/layouts/BaseLayout.astro";
 import Movie from "@/components/services/[Movies]/{Movie}/Movie.astro";
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
 import { envEnabled } from "@/lib/sanity/helpers/envEnabled";
+import { portableTextToString } from "@/lib/sanity/helpers/portableTextToString";
+import { safeImageUrl } from "@/lib/sanity/helpers/image";
 
 export async function getStaticPaths() {
   if (!envEnabled()) {
@@ -22,9 +24,37 @@ export async function getStaticPaths() {
 }
 
 const { sanityData } = Astro.props;
+const movie = sanityData.movie as MovieType;
+const title = movie.title || movie.name;
+const description = portableTextToString(movie.overview) || `Details about ${title}.`;
+const socialImage = safeImageUrl(movie.poster) || undefined;
 
 ---
 
-<BaseLayout pageId="page-movies">
+<BaseLayout
+  pageId="page-movies"
+  title={title}
+  description={description}
+  seo={{
+    canonicalPath: `/movies/${movie.slug.current}/`,
+    openGraph: {
+      type: "website",
+      image: socialImage,
+    },
+    twitter: {
+      image: socialImage,
+    },
+  }}
+  jsonLd={[
+    { "@type": "WebPage", name: title, description },
+    {
+      "@type": "Movie",
+      name: title,
+      description,
+      datePublished: movie.releaseDate,
+      image: socialImage,
+    },
+  ]}
+>
   <Movie data={sanityData} />
 </BaseLayout>

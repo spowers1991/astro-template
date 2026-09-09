@@ -11,23 +11,31 @@ import Main from "@/components/html/{Main}/Main.astro";
 import Meta from "@/components/html/{Meta}/Meta.astro";
 import Nav from "@/components/html/{Nav}/Nav.astro";
 import P from "@/components/html/{P}/P.astro";
-import Title from "@/components/html/{Title}/Title.astro";
+import JsonLd from "@/components/seo/JsonLd.astro";
+import Seo from "@/components/seo/Seo.astro";
 import { resolvePageId } from "@/lib/astro/helpers/resolvePageId";
+import type { JsonLdSchema } from "@/lib/seo/types/jsonLd";
+import type { SeoMeta } from "@/lib/seo/types/seo";
 
 interface Props {
   pageId?: string;
   title?: string;
   description?: string;
+  seo?: Partial<SeoMeta>;
+  jsonLd?: JsonLdSchema | JsonLdSchema[];
 }
 
 const {
   pageId,
   title = "Movie App",
   description = "Astro Movie Application",
+  seo,
+  jsonLd,
 } = Astro.props;
 
 const astro = Astro;
 const resolvedPageId = resolvePageId({ astro, pageId });
+const jsonLdEntries = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
 ---
 
@@ -37,9 +45,18 @@ const resolvedPageId = resolvePageId({ astro, pageId });
     <Meta charset="utf-8" />
     <Link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <Meta name="description" content={description} />
     <Meta name="generator" content={Astro.generator} />
-    <Title>{title}</Title>
+    <Seo
+      title={seo?.title ?? title}
+      description={seo?.description ?? description}
+      canonicalPath={seo?.canonicalPath}
+      robots={seo?.robots}
+      openGraph={seo?.openGraph}
+      twitter={seo?.twitter}
+    />
+    {jsonLdEntries.map((schema) => (
+      <JsonLd schema={schema} />
+    ))}
   </Head>
   <Body>
     <Header>
