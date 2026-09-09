@@ -10,7 +10,7 @@ const { releaseDate } = Astro.props;
 ---
 
 {releaseDate && (
-  <Section>
+  <Section class="movie-release-date">
     <P>
       <strong>Release Date:</strong> {new Date(releaseDate).toLocaleDateString()}
     </P>
