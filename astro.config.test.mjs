@@ -56,3 +56,16 @@ test("uses the Vercel production URL to enable sitemap generation", async () => 
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
   );
 });
+
+test("prefers SITE_URL over the Vercel production URL", async () => {
+  const config = await loadConfig({
+    SITE_URL: "https://docs.example.test",
+    VERCEL_PROJECT_PRODUCTION_URL: "astro-template.vercel.app",
+  });
+
+  assert.equal(config.site, "https://docs.example.test");
+  assert.deepEqual(
+    config.integrations.map((integration) => integration.name),
+    ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
+  );
+});
