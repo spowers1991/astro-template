@@ -120,3 +120,15 @@ test("ignores insecure http site env values and falls back to the next valid sou
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
   );
 });
+
+test("normalizes configured site URLs by dropping query and hash fragments", async () => {
+  const config = await loadConfig({
+    SITE_URL: "https://docs.example.test/docs?x=1#y",
+  });
+
+  assert.equal(config.site, "https://docs.example.test/docs/");
+  assert.deepEqual(
+    config.integrations.map((integration) => integration.name),
+    ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
+  );
+});
