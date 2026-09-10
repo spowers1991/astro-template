@@ -11,11 +11,11 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
 const vercelUrl = env.VERCEL_PROJECT_PRODUCTION_URL || env.VERCEL_URL;
-const site = env.SITE_URL || env.PUBLIC_SITE_URL || (vercelUrl ? `https://${vercelUrl}` : 'https://astro-template.vercel.app');
+const site = env.SITE_URL || env.PUBLIC_SITE_URL || (vercelUrl ? `https://${vercelUrl}` : undefined);
 
 export default defineConfig({
   compressHTML: true,
-  site,
+  ...(site ? { site } : {}),
   vite: {
     build: {
       cssMinify: true,
@@ -31,6 +31,6 @@ export default defineConfig({
   integrations: [
     react(),
     mdx(),
-    sitemap(),
+    ...(site ? [sitemap()] : []),
   ]
 });

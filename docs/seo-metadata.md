@@ -3,8 +3,8 @@
 ## Configuration
 
 - Sitemap generation uses `@astrojs/sitemap`.
-- `astro.config.mjs` uses `SITE_URL`, `PUBLIC_SITE_URL`, or Vercel's deployment URL before falling back to `https://astro-template.vercel.app` so sitemap generation still runs when site env vars are missing.
-- Set `SITE_URL` (or `PUBLIC_SITE_URL`) for production builds so canonical URLs and sitemap links resolve correctly.
+- `astro.config.mjs` enables sitemap generation only when `SITE_URL`, `PUBLIC_SITE_URL`, or a Vercel deployment URL is available.
+- Set `SITE_URL` (or `PUBLIC_SITE_URL`) for production builds so canonical URLs and sitemap links resolve correctly and the sitemap integration stays active outside Vercel.
 
 ## Reusable metadata
 
