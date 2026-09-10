@@ -3,6 +3,7 @@
 ## Configuration
 
 - Sitemap generation uses `@astrojs/sitemap`.
+- `astro.config.mjs` falls back to `https://example.com` so sitemap generation still runs when site env vars are missing.
 - Set `SITE_URL` (or `PUBLIC_SITE_URL`) for production builds so canonical URLs and sitemap links resolve correctly.
 
 ## Reusable metadata
