@@ -71,7 +71,7 @@ test("preserves an existing scheme in the Vercel production URL", async () => {
 
 test("prefers SITE_URL over the Vercel production URL", async () => {
   const config = await loadConfig({
-    SITE_URL: "https://docs.example.test",
+    SITE_URL: "https://docs.example.test/",
     VERCEL_PROJECT_PRODUCTION_URL: "astro-template.vercel.app",
   });
 
@@ -84,7 +84,7 @@ test("prefers SITE_URL over the Vercel production URL", async () => {
 
 test("uses PUBLIC_SITE_URL when SITE_URL is not set", async () => {
   const config = await loadConfig({
-    PUBLIC_SITE_URL: "https://public.example.test",
+    PUBLIC_SITE_URL: "https://public.example.test/",
     VERCEL_PROJECT_PRODUCTION_URL: "astro-template.vercel.app",
   });
 

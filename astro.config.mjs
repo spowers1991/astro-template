@@ -17,7 +17,8 @@ function resolveSiteUrl(value) {
     return undefined;
   }
 
-  return /^https?:\/\//u.test(value) ? value : `https://${value}`;
+  const resolvedUrl = new URL(/^https?:\/\//u.test(value) ? value : `https://${value}`);
+  return resolvedUrl.origin;
 }
 
 // https://astro.build/config
