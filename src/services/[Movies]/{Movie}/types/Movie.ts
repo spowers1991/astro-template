@@ -10,6 +10,9 @@ export interface Movie extends Omit<Post, "_type" | "publishedAt" | "body"> {
   name: string;
   overview: PortableTextBlock[];
   popularity: number;
+  genre: string;
+  duration: string;
+  url: string;
 
   poster: {
     _type: "image";

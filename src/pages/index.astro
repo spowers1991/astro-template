@@ -2,15 +2,15 @@
 
 import { getMovies } from "@/services/[Movies]/queries/getMovies";
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
-import type { Person as PersonType } from "@/services/[Persons]/{Person}/types/Person";
-import type { Movie as MovieType } from "@/services/[Movies]/{Movie}/types/Movie";
+import type { Person as Person} from "@/services/[Persons]/{Person}/types/Person";
+import type { Movie as Movie } from "@/services/[Movies]/{Movie}/types/Movie";
 import BaseLayout from "@/components/layouts/BaseLayout.astro";
 import Movies from "@/components/services/[Movies]/Movies.astro";
 import { envEnabled } from "@/lib/sanity/helpers/envEnabled";
 
 const sanityEnabled = envEnabled();
-const movies = sanityEnabled ? await getMovies() as MovieType[] : [];
-const persons = sanityEnabled ? await getPersons() as PersonType[] : [];
+const movies = sanityEnabled ? await getMovies() as Movie[] : [];
+const persons = sanityEnabled ? await getPersons() as Person[] : [];
 
 const sanityData = { movies, persons };
 const title = "Movie App";
