@@ -5,6 +5,7 @@ interface ResolveCanonicalUrlProps {
 }
 
 export function resolveCanonicalUrl({ path, site, url }: ResolveCanonicalUrlProps): string {
-  const baseUrl = site ?? url.origin;
-  return new URL(path ?? url.pathname, baseUrl).toString();
+  const baseUrl = site ? new URL("./", site) : new URL(url.origin);
+  const resolvedPath = site ? (path ?? url.pathname).replace(/^\/+/u, "") : path ?? url.pathname;
+  return new URL(resolvedPath, baseUrl).toString();
 }

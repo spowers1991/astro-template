@@ -50,7 +50,7 @@ test("uses the Vercel production URL to enable sitemap generation", async () => 
     VERCEL_PROJECT_PRODUCTION_URL: "astro-template.vercel.app",
   });
 
-  assert.equal(config.site, "https://astro-template.vercel.app");
+  assert.equal(config.site, "https://astro-template.vercel.app/");
   assert.deepEqual(
     config.integrations.map((integration) => integration.name),
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
@@ -62,7 +62,7 @@ test("preserves an existing scheme in the Vercel production URL", async () => {
     VERCEL_PROJECT_PRODUCTION_URL: "https://astro-template.vercel.app",
   });
 
-  assert.equal(config.site, "https://astro-template.vercel.app");
+  assert.equal(config.site, "https://astro-template.vercel.app/");
   assert.deepEqual(
     config.integrations.map((integration) => integration.name),
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
@@ -71,11 +71,11 @@ test("preserves an existing scheme in the Vercel production URL", async () => {
 
 test("prefers SITE_URL over the Vercel production URL", async () => {
   const config = await loadConfig({
-    SITE_URL: "https://docs.example.test/",
+    SITE_URL: "https://docs.example.test/docs/",
     VERCEL_PROJECT_PRODUCTION_URL: "astro-template.vercel.app",
   });
 
-  assert.equal(config.site, "https://docs.example.test");
+  assert.equal(config.site, "https://docs.example.test/docs/");
   assert.deepEqual(
     config.integrations.map((integration) => integration.name),
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
@@ -84,11 +84,11 @@ test("prefers SITE_URL over the Vercel production URL", async () => {
 
 test("uses PUBLIC_SITE_URL when SITE_URL is not set", async () => {
   const config = await loadConfig({
-    PUBLIC_SITE_URL: "https://public.example.test/",
+    PUBLIC_SITE_URL: "https://public.example.test/public/",
     VERCEL_PROJECT_PRODUCTION_URL: "astro-template.vercel.app",
   });
 
-  assert.equal(config.site, "https://public.example.test");
+  assert.equal(config.site, "https://public.example.test/public/");
   assert.deepEqual(
     config.integrations.map((integration) => integration.name),
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
@@ -98,10 +98,10 @@ test("uses PUBLIC_SITE_URL when SITE_URL is not set", async () => {
 test("ignores malformed site env values and falls back to the next valid source", async () => {
   const config = await loadConfig({
     SITE_URL: "::not-a-url::",
-    PUBLIC_SITE_URL: "https://public.example.test/",
+    PUBLIC_SITE_URL: "https://public.example.test/public/",
   });
 
-  assert.equal(config.site, "https://public.example.test");
+  assert.equal(config.site, "https://public.example.test/public/");
   assert.deepEqual(
     config.integrations.map((integration) => integration.name),
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],

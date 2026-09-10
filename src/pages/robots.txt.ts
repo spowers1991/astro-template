@@ -10,7 +10,7 @@ export const GET: APIRoute = ({ site }) => {
   ];
 
   if (site) {
-    rules.push(`Sitemap: ${new URL("/sitemap-index.xml", site).toString()}`);
+    rules.push(`Sitemap: ${new URL("sitemap-index.xml", site).toString()}`);
   }
 
   return new Response(`${rules.join("\n")}\n`, {

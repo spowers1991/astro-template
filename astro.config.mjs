@@ -19,7 +19,12 @@ function resolveSiteUrl(value) {
 
   try {
     const resolvedUrl = new URL(/^https?:\/\//u.test(value) ? value : `https://${value}`);
-    return resolvedUrl.origin;
+    resolvedUrl.hash = '';
+    resolvedUrl.search = '';
+    resolvedUrl.pathname = resolvedUrl.pathname === '/'
+      ? '/'
+      : `${resolvedUrl.pathname.replace(/\/+$/u, '')}/`;
+    return resolvedUrl.toString();
   } catch {
     return undefined;
   }
