@@ -10,8 +10,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
-const vercelUrl = env.VERCEL_PROJECT_PRODUCTION_URL || env.VERCEL_URL;
-const site = env.SITE_URL || env.PUBLIC_SITE_URL || (vercelUrl ? `https://${vercelUrl}` : undefined);
+const site = env.SITE_URL
+  || env.PUBLIC_SITE_URL
+  || (env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined);
 
 export default defineConfig({
   compressHTML: true,
