@@ -19,6 +19,10 @@ function resolveSiteUrl(value) {
 
   try {
     const resolvedUrl = new URL(/^https?:\/\//u.test(value) ? value : `https://${value}`);
+    if (resolvedUrl.protocol !== 'https:') {
+      return undefined;
+    }
+
     resolvedUrl.hash = '';
     resolvedUrl.search = '';
     resolvedUrl.pathname = resolvedUrl.pathname === '/'

@@ -107,3 +107,16 @@ test("ignores malformed site env values and falls back to the next valid source"
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
   );
 });
+
+test("ignores insecure http site env values and falls back to the next valid source", async () => {
+  const config = await loadConfig({
+    SITE_URL: "http://public.example.test/public/",
+    VERCEL_PROJECT_PRODUCTION_URL: "astro-template.vercel.app",
+  });
+
+  assert.equal(config.site, "https://astro-template.vercel.app/");
+  assert.deepEqual(
+    config.integrations.map((integration) => integration.name),
+    ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
+  );
+});
