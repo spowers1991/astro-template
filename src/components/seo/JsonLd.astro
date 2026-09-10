@@ -9,7 +9,7 @@ interface Props {
 
 const { schema } = Astro.props;
 const canonicalUrl = resolveCanonicalUrl({ site: Astro.site, url: Astro.url });
-const siteUrl = Astro.site ? new URL("/", Astro.site).toString() : new URL("/", Astro.url.origin).toString();
+const siteUrl = Astro.site ? new URL("./", Astro.site).toString() : new URL("/", Astro.url.origin).toString();
 
 const resolvedSchema = resolveJsonLdSchema({ schema, canonicalUrl, siteUrl });
 ---
