@@ -6,6 +6,7 @@ const ENV_KEYS = [
   "PUBLIC_SITE_URL",
   "VERCEL_PROJECT_PRODUCTION_URL",
 ];
+let importCounter = 0;
 
 async function loadConfig(env = {}) {
   const previousEnv = Object.fromEntries(ENV_KEYS.map((key) => [key, process.env[key]]));
@@ -20,7 +21,7 @@ async function loadConfig(env = {}) {
   }
 
   try {
-    const config = await import(`./astro.config.mjs?case=${Math.random()}`);
+    const config = await import(`./astro.config.mjs?case=${importCounter += 1}`);
     return config.default;
   } finally {
     for (const key of ENV_KEYS) {
