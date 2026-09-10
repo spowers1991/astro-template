@@ -69,3 +69,16 @@ test("prefers SITE_URL over the Vercel production URL", async () => {
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
   );
 });
+
+test("uses PUBLIC_SITE_URL when SITE_URL is not set", async () => {
+  const config = await loadConfig({
+    PUBLIC_SITE_URL: "https://public.example.test",
+    VERCEL_PROJECT_PRODUCTION_URL: "astro-template.vercel.app",
+  });
+
+  assert.equal(config.site, "https://public.example.test");
+  assert.deepEqual(
+    config.integrations.map((integration) => integration.name),
+    ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
+  );
+});
