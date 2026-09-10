@@ -94,3 +94,16 @@ test("uses PUBLIC_SITE_URL when SITE_URL is not set", async () => {
     ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
   );
 });
+
+test("ignores malformed site env values and falls back to the next valid source", async () => {
+  const config = await loadConfig({
+    SITE_URL: "::not-a-url::",
+    PUBLIC_SITE_URL: "https://public.example.test/",
+  });
+
+  assert.equal(config.site, "https://public.example.test");
+  assert.deepEqual(
+    config.integrations.map((integration) => integration.name),
+    ["@astrojs/react", "@astrojs/mdx", "@astrojs/sitemap"],
+  );
+});
