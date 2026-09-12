@@ -1,4 +1,4 @@
-import type { SessionData } from "@/lib/astro/sessions/types/SessionData";
+import type { SessionData } from "@/lib/sessions/types/SessionData";
 
 export function setSessionStore<T>(entry: SessionData<T>) {
     if (typeof window === "undefined") return;
