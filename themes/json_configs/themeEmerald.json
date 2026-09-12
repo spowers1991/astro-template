@@ -1,0 +1,47 @@
+{
+  "name": "Theme Emerald-Forest",
+  "font": "poppins",
+  "meta": {
+    "primary": "bg-gradient-to-r from-[#10B981] to-[#34D399] text-[#022C22]",
+    "surface": "bg-[#022C22]/80 text-[#D1FAE5]",
+    "muted": "text-[#6EE7B7]",
+    "shadow": "shadow-lg",
+    "elevations": {
+      "1": "shadow-sm",
+      "2": "shadow",
+      "3": "shadow-lg",
+      "4": "shadow-[0_0_25px_rgba(16,185,129,0.25)]"
+    }
+  },
+  "styles": {
+    "html": "font-poppins",
+    "body": "font-poppins text-base leading-relaxed bg-gradient-to-br from-[#020617] via-[#052E2B] to-[#022C22] text-[#D1FAE5]",
+    "container": "max-w-6xl mx-auto px-4",
+    "main": "mx-auto px-4 py-8",
+    "section": "mx-0 my-12",
+
+    "header": "bg-[#022C22]/80 backdrop-blur border-b border-[#065F46]",
+    "nav-link": "text-[#A7F3D0] hover:text-[#34D399]",
+
+    "h1": "text-5xl bg-gradient-to-r from-[#34D399] to-[#6EE7B7] text-transparent bg-clip-text mb-10",
+    "h2": "text-3xl text-[#A7F3D0] mb-6",
+    "h3": "text-2xl text-[#A7F3D0] mb-4",
+    "ul": "mb-4 list-none pl-6",
+    "ol": "mb-4 list-decimal pl-6",
+    "li": "mb-2",
+
+    "select": "w-full px-3 py-2 border border-slate-300 rounded-md text-[#fff] bg-[#022C22]/80",
+    "option": "text-[#111]",
+    "checkbox": "relative w-6 h-6 bg-[#022C22] border-[#10B981] border-2 peer-checked:bg-gradient-to-r from-[#10B981] to-[#34D399]",
+    "input": "w-full px-4 py-2 border border-[#065F46] rounded-lg bg-[#022C22]/80 text-[#D1FAE5] focus:outline-none focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] backdrop-blur",
+    "textarea": "w-full px-4 py-2 border border-[#065F46] rounded-lg bg-[#022C22]/80 text-[#D1FAE5] focus:outline-none focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] backdrop-blur",
+
+    "p": "text-[#A7F3D0]",
+
+    "card": "bg-[#022C22]/80 border border-[#065F46] rounded-2xl p-6",
+
+      "button":  "mb-4 bg-gradient-to-r from-[#10B981] to-[#34D399] text-[#022C22] px-4 py-2 rounded uppercase text-sm",
+
+    "footer": "text-center text-[#6EE7B7] py-6"
+  }
+}
