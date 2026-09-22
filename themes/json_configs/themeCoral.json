@@ -1,0 +1,46 @@
+{
+  "name": "Theme Sunset-Coral",
+  "font": "poppins",
+  "meta": {
+    "primary": "bg-gradient-to-r from-[#FB7185] to-[#F59E0B] text-[#451A03]",
+    "surface": "bg-[#451A03]/80 text-[#FFEDD5]",
+    "muted": "text-[#FDBA74]",
+    "shadow": "shadow-lg",
+    "elevations": {
+      "1": "shadow-sm",
+      "2": "shadow",
+      "3": "shadow-lg",
+      "4": "shadow-[0_0_25px_rgba(251,113,133,0.25)]"
+    }
+  },
+  "styles": {
+    "body": "font-poppins text-base leading-relaxed bg-gradient-to-br from-[#020617] via-[#7C2D12] to-[#451A03] text-[#FFEDD5]",
+    "container": "max-w-6xl mx-auto px-4",
+    "main": "mx-auto px-4 py-8",
+    "section": "mx-0 my-12",
+
+    "header": "bg-[#451A03]/80 backdrop-blur border-b border-[#9A3412]",
+    "nav-link": "text-[#FDBA74] hover:text-[#FB7185]",
+
+    "h1": "text-5xl bg-gradient-to-r from-[#FB7185] to-[#FCD34D] text-transparent bg-clip-text mb-10",
+    "h2": "text-3xl text-[#FDBA74] mb-6",
+    "h3": "text-2xl text-[#FDBA74] mb-4",
+    "ul": "mb-4 list-none pl-6",
+    "ol": "mb-4 list-decimal pl-6",
+    "li": "mb-2",
+
+    "select": "w-full px-3 py-2 border border-slate-300 rounded-md text-[#fff] bg-[#451A03]/80",
+    "option": "text-[#111]",
+    "checkbox": "relative w-6 h-6 bg-[#451A03] border-[#FB7185] border-2 peer-checked:bg-gradient-to-r from-[#FB7185] to-[#F59E0B]",
+    "input": "w-full px-4 py-2 border border-[#9A3412] rounded-lg bg-[#451A03]/80 text-[#FFEDD5] focus:outline-none focus:ring-2 focus:ring-[#FB7185] focus:border-[#FB7185] backdrop-blur",
+    "textarea": "w-full px-4 py-2 border border-[#9A3412] rounded-lg bg-[#451A03]/80 text-[#FFEDD5] focus:outline-none focus:ring-2 focus:ring-[#FB7185] focus:border-[#FB7185] backdrop-blur",
+
+    "p": "text-[#FDBA74]",
+
+    "card": "bg-[#451A03]/80 border border-[#9A3412] rounded-2xl p-6",
+
+    "button": "mb-4 bg-gradient-to-r from-[#FB7185] to-[#F59E0B] text-[#451A03] px-4 py-2 rounded uppercase text-sm",
+
+    "footer": "text-center text-[#FDBA74] py-6"
+  }
+}

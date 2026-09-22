@@ -1,0 +1,53 @@
+{
+  "name": "Theme Midnight-Violet",
+  "font": "orbitron",
+  "meta": {
+    "primary": "bg-gradient-to-r from-[#6366F1] to-[#A78BFA] text-[#1E1B4B]",
+    "surface": "bg-[#1E1B4B]/80 text-[#E0E7FF]",
+    "muted": "text-[#C4B5FD]",
+    "shadow": "shadow-lg",
+    "elevations": {
+      "1": "shadow-sm",
+      "2": "shadow",
+      "3": "shadow-lg",
+      "4": "shadow-[0_0_25px_rgba(99,102,241,0.25)]"
+    }
+  },
+  "styles": {
+    "html": "font-orbitron",
+    "body": "font-orbitron text-base leading-relaxed bg-gradient-to-br from-[#020617] via-[#1E1B4B] to-[#312E81] text-[#E0E7FF]",
+    "container": "max-w-6xl mx-auto px-4",
+    "main": "mx-auto px-4 py-8",
+    "section": "mx-0 my-12",
+
+    "header": "bg-[#1E1B4B]/80 backdrop-blur border-b border-[#4338CA]",
+    "nav-link": "text-[#C4B5FD] hover:text-[#A78BFA]",
+
+    "h1": "text-5xl bg-gradient-to-r from-[#A78BFA] to-[#C4B5FD] text-transparent bg-clip-text mb-10",
+    "h2": "text-3xl text-[#C4B5FD] mb-6",
+    "h3": "text-2xl text-[#C4B5FD] mb-4",
+    "ul": "mb-4 list-none pl-6",
+    "ol": "mb-4 list-decimal pl-6",
+    "li": "mb-2",
+
+    "select": "w-full px-3 py-2 border border-slate-300 rounded-md text-[#fff] bg-[#1E1B4B]/80",
+    "option": "text-[#111]",
+    "checkbox": "relative w-6 h-6 bg-[#1E1B4B] border-[#6366F1] border-2 peer-checked:bg-gradient-to-r from-[#6366F1] to-[#A78BFA]",
+    "input": "w-full px-4 py-2 border border-[#4338CA] rounded-lg bg-[#1E1B4B]/80 text-[#E0E7FF] focus:outline-none focus:ring-2 focus:ring-[#A78BFA] focus:border-[#A78BFA] backdrop-blur",
+    "textarea": "w-full px-4 py-2 border border-[#4338CA] rounded-lg bg-[#1E1B4B]/80 text-[#E0E7FF] focus:outline-none focus:ring-2 focus:ring-[#A78BFA] focus:border-[#A78BFA] backdrop-blur",
+
+    "p": "text-[#C4B5FD]",
+
+    "card": "bg-[#1E1B4B]/80 border border-[#4338CA] rounded-2xl p-6",
+
+    "button": {
+      "base": "mb-4 bg-gradient-to-r from-[#6366F1] to-[#A78BFA] text-[#1E1B4B] px-4 py-2 rounded",
+      "variants": {
+        "primary": "mb-4 bg-gradient-to-r from-[#6366F1] to-[#A78BFA] text-[#1E1B4B] px-4 py-2 rounded",
+        "secondary": "mb-4  text-[#1E1B4B] px-4 py-2 rounded !bg-black"
+      }
+    },
+
+    "footer": "text-center text-[#C4B5FD] py-6"
+  }
+}

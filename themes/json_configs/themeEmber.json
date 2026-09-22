@@ -1,0 +1,55 @@
+{
+  "name": "Theme Sunset-Ember",
+  "font": "poppins",
+  "meta": {
+    "primary": "bg-gradient-to-r from-[#F97316] to-[#FACC15] text-black",
+    "surface": "bg-[#2A140F]/80 text-[#FED7AA]",
+    "muted": "text-[#FDBA74]",
+    "shadow": "shadow-lg",
+    "elevations": {
+      "1": "shadow-sm",
+      "2": "shadow",
+      "3": "shadow-lg",
+      "4": "shadow-[0_0_25px_rgba(251,146,60,0.3)]"
+    }
+  },
+  "styles": {
+    "html": "font-sans",
+    "body": "font-sans text-base leading-relaxed bg-gradient-to-br from-[#1C0F0A] via-[#3B1F1A] to-[#0F172A] text-[#FDE68A] antialiased",
+    "container": "max-w-6xl mx-auto px-4",
+    "main": "mx-auto px-4 py-8",
+    "section": "mx-0 my-12",
+
+    "header": "bg-[#1C0F0A]/80 backdrop-blur border-b border-[#7C2D12]",
+    "header-inner": "flex justify-between items-center px-4 py-4",
+    "nav": "flex gap-4",
+    "nav-link": "text-[#FED7AA] hover:text-[#FACC15]",
+    "nav-link-active": "text-[#FACC15] bg-[#7C2D12]/30 px-3 py-2 rounded",
+    "brand": "text-[#FDE68A] font-semibold",
+
+    "h1": "text-5xl bg-gradient-to-r from-[#F97316] to-[#FACC15] text-transparent bg-clip-text mb-10",
+    "h2": "text-4xl text-[#FDBA74] mb-6",
+    "h3": "text-2xl text-[#FDBA74] mb-4", 
+    "h4": "text-xl text-[#FDBA74] mb-3",
+    "select": "w-full px-3 py-2 border border-slate-300 rounded-md text-[#fff] bg-[#1C0F0A]/90",
+    "option": "text-[#111]",
+    "checkbox": "relative w-6 h-6 bg-[#2A140F] border-[#F97316] border-2 peer-checked:bg-gradient-to-r from-[#F97316] to-[#FACC15]",
+    "input": "w-full px-4 py-2 border border-[#7C2D12] rounded-lg bg-[#2A140F]/80 text-[#FED7AA] focus:outline-none focus:ring-2 focus:ring-[#FACC15] focus:border-[#FACC15] backdrop-blur",
+    "textarea": "w-full px-4 py-2 border border-[#7C2D12] rounded-lg bg-[#2A140F]/80 text-[#FED7AA] focus:outline-none focus:ring-2 focus:ring-[#FACC15] focus:border-[#FACC15] backdrop-blur", 
+
+    "p": "text-[#FED7AA] mb-4",
+    "a": "text-[#FB923C] hover:text-[#FACC15] underline",
+
+    "ul": "mb-4 list-none pl-6",
+    "ol": "mb-4 list-decimal pl-6",
+    "li": "mb-2",
+
+    "card": "bg-[#2A140F]/80 border border-[#7C2D12] rounded-2xl p-6",
+    "card-title": "text-[#FDE68A]",
+    "card-body": "text-[#FED7AA]",
+
+    "button":  "mb-4 px-4 py-2 rounded bg-gradient-to-r from-[#F97316] to-[#FACC15] text-black",
+
+    "footer": "text-center text-[#FDBA74] py-6"
+  }
+}
