@@ -30,6 +30,19 @@ export interface MovieSchema {
   image?: string | string[];
   datePublished?: string;
   url?: string;
+  genre?: string;
+  duration?: string;
 }
 
-export type JsonLdSchema = WebSiteSchema | WebPageSchema | ArticleSchema | MovieSchema;
+export interface ListItemSchema<T = JsonLdSchema> {
+  "@type": "ListItem";
+  position: number;
+  item: T;
+}
+
+export interface ItemListSchema<T = JsonLdSchema> {
+  "@type": "ItemList";
+  itemListElement: ListItemSchema<T>[];
+}
+
+export type JsonLdSchema = WebSiteSchema | WebPageSchema | ArticleSchema | MovieSchema | ItemListSchema;

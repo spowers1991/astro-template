@@ -1,0 +1,41 @@
+---
+
+import type { Movie } from '@/services/[Movies]/{Movie}/types/Movie';
+import type { Person } from '@/services/[Persons]/{Person}/types/Person';
+import type { MovieSchema } from '@/lib/seo/types/jsonLd';
+import BaseLayout from '@/components/layouts/BaseLayout.astro';
+import Movies from '@/components/services/[Movies]/Movies.astro';
+import { createItemList } from '@/lib/seo/helpers/createItemList';
+import { envEnabled } from '@/lib/sanity/helpers/envEnabled';
+import { getMovies } from '@/services/[Movies]/queries/getMovies';
+import { getPersons } from '@/services/[Persons]/queries/getPersons';
+
+const title = "Movies";
+const description = "A list of all the movies.";
+
+const sanityEnabled = envEnabled();
+const movies = sanityEnabled ? await getMovies() as Movie[] : [];
+const persons = sanityEnabled ? await getPersons() as Person[] : [];
+
+const sanityData = { movies, persons };
+
+const moviesListJsonLd = createItemList(movies, (movie): MovieSchema => ({
+    "@type": "Movie",
+    name: movie.title,
+    url: movie.url,
+    image: movie.poster?.asset?.url,
+    datePublished: movie.releaseDate,
+    genre: movie.genre,
+    duration: movie.duration,
+}));
+
+---
+
+<BaseLayout
+  pageId="page-movies"
+  title={title}
+  description={description}
+  jsonLd={moviesListJsonLd}
+>
+  <Movies data={sanityData} />
+</BaseLayout>
