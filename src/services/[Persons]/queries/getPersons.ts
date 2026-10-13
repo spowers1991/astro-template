@@ -1,5 +1,5 @@
 // lib/sanity/queries/getMovies.ts
-import { sanityClient } from "@/lib/sanity/api/astroClients";
+import { sanityClient } from "@/lib/sanity/api/astroClient";
 import { cache } from "react";
 import type { Person as PersonType } from "@/services/[Persons]/{Person}/types/Person";
 

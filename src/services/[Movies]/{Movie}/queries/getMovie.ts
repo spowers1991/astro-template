@@ -1,5 +1,5 @@
 // lib/sanity/queries/getMovie.ts
-import { sanityClient } from "@/lib/sanity/api/astroClients";
+import { sanityClient } from "@/lib/sanity/api/astroClient";
 import { cache } from "react";
 import type { Movie as MovieType } from "../types/Movie";
 
