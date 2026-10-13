@@ -1,6 +1,6 @@
 // /sanity/lib/image.ts
 import { createImageUrlBuilder } from "@sanity/image-url";
-import { sanityClient } from "@/lib/sanity/api/astroClients";
+import { sanityClient } from "@/lib/sanity/api/astroClient";
 
 const builder = createImageUrlBuilder(sanityClient);
 

@@ -1,4 +1,4 @@
-import { sanityClient } from "@/lib/sanity/api/astroClients";
+import { sanityClient } from "@/lib/sanity/api/astroClient";
 
 type SlugObject = Record<string, { current?: string } | undefined>;
 
