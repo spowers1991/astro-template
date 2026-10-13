@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import AddEventsForm from "@/components/services/BookingCalendar/[Events]/forms/AddEventsForm";
-import Event from "@/components/services/[Events]/{Event}/Event";
+import Event from "@/components/services/BookingCalendar/[Events]/{Event}/Event";
 import { useEvents } from "@/lib/bookings/state/EventsContext";
 import { getBookingEventsByDate } from "@/services/[BookingEvents]/queries/getBookingEventsByDate";
 

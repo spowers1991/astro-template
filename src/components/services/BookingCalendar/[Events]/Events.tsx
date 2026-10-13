@@ -1,5 +1,5 @@
 import { EventsProvider, useEvents } from "@/lib/bookings/state/EventsContext";
-import Event from "@/components/services/[Events]/{Event}/Event";
+import Event from "@/components/services/BookingCalendar/[Events]/{Event}/Event";
 
 function EventsList() {
   const { EVENTS_events } = useEvents();
