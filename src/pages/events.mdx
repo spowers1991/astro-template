@@ -1,0 +1,21 @@
+---
+layout: ../components/layouts/BaseLayout.astro
+title: "Events"
+description: "All booked cinema events."
+seo:
+  canonicalPath: /events/
+  openGraph:
+    type: website
+  twitter:
+    card: summary
+jsonLd:
+  - "@type": WebPage
+    name: "Events"
+    description: "All booked cinema events."
+---
+
+import Events from "@/components/services/[Events]/Events.tsx";
+
+## Events
+
+<Events client:load />

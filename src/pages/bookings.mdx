@@ -1,0 +1,23 @@
+---
+layout: ../components/layouts/BaseLayout.astro
+title: "Integration bookings"
+description: "Bookings of MDX, Tailwind CSS, and React."
+seo:
+  canonicalPath: /booking/
+  openGraph:
+    type: website
+  twitter:
+    card: summary
+jsonLd:
+  - "@type": WebPage
+    name: "Integration bookings"
+    description: "Bookings of MDX, Tailwind CSS, and React."
+---
+
+import Bookings from "@/components/services/BookingCalendar/[Bookings]/Bookings.tsx";
+
+## Core integrations
+
+This page is the booking form...
+
+<Bookings client:visible />
